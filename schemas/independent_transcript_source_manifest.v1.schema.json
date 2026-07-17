@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pichia-safe-harbor/independent-transcript-source-manifest/v1",
+  "type": "object",
+  "required": ["schema_version", "candidate_id", "accessions", "protected_authority", "files"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "candidate_id": {"const": "prjna604658-srr11011828"},
+    "accessions": {
+      "type": "object",
+      "required": ["bioproject", "study", "experiment", "sample", "run", "publication_doi", "pmid"],
+      "properties": {
+        "bioproject": {"const": "PRJNA604658"},
+        "study": {"const": "SRP247014"},
+        "experiment": {"const": "SRX7669278"},
+        "sample": {"const": "SAMN13978086"},
+        "run": {"const": "SRR11011828"},
+        "publication_doi": {"const": "10.1007/s10529-020-02977-z"},
+        "pmid": {"const": "32737719"}
+      }
+    },
+    "protected_authority": {
+      "type": "object",
+      "required": ["slice0", "slice0a", "slice0b"],
+      "additionalProperties": false,
+      "properties": {
+        "slice0": {"const": {"path": "local_runs/strain-b_slice0_completion_v6_run1/acceptance_manifest.json", "size_bytes": 7175, "sha256": "f04ac9119a891885dfd7f883484f5fe1ddbfea6a1895bcd353b604dec2b294b0"}},
+        "slice0a": {"const": {"path": "local_runs/slice0a/qualification_v5_run1/acceptance_manifest.json", "size_bytes": 2120, "sha256": "564324ad63ceb22e6728e85b09bfbcfc625ad39df3048702bc99d47c507e4b78"}},
+        "slice0b": {"const": {"path": "local_runs/slice0b/qualification_v5_run1/acceptance_manifest.json", "size_bytes": 2864, "sha256": "83bdf169bbfa3dcfbf7b1299175fb70f27f72e3c4388672703a9df9e4c7942f3"}}
+      }
+    },
+    "files": {"type": "object", "minProperties": 7}
+  }
+}

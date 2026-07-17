@@ -1,0 +1,24 @@
+##gff-version 3
+#!genome-build-accession NCBI_Assembly:FIXTURE_001.1
+##sequence-region chr1 1 100
+##sequence-region chr2 1 80
+##sequence-region chr_empty 1 50
+##sequence-region mito 1 40
+##sequence-region scaffold 1 60
+chr1	fixture	gene	1	10	.	+	.	ID=g1
+chr1	fixture	mRNA	1	10	.	+	.	ID=t1;Parent=g1
+chr1	fixture	exon	1	4	.	+	.	ID=e1;Parent=t1
+chr1	fixture	exon	8	10	.	+	.	ID=e2;Parent=t1
+chr1	fixture	gene	21	30	.	-	.	ID=g2;partial=true;start_range=.,21;end_range=30,.
+chr1	fixture	gene	41	50	.	+	.	ID=g3
+chr1	fixture	gene	61	70	.	+	.	ID=g4
+chr1	fixture	gene	81	90	.	.	.	ID=g5
+chr2	fixture	mRNA	11	30	.	+	.	ID=t2;Parent=g6
+chr2	fixture	exon	11	15	.	+	.	ID=e3;Parent=t2
+chr2	fixture	gene	11	30	.	+	.	ID=g6
+chr2	fixture	mRNA	12	29	.	+	.	ID=t3;Parent=g6
+chr2	fixture	gene	15	20	.	-	.	ID=g_nested
+chr2	fixture	gene	35	40	.	-	.	ID=g7
+chr2	fixture	CDS	50	55	.	+	.	ID=orphan_cds;Parent=missing_transcript
+mito	fixture	gene	5	12	.	+	.	ID=mt_gene
+scaffold	fixture	gene	5	12	.	-	.	ID=scaffold_gene

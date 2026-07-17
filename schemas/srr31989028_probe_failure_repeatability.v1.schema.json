@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pichia-safe-harbor/srr31989028-probe-failure-repeatability/v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "verification_type", "status", "run_id", "compared_artifact_count", "identical_artifact_sha256", "different_artifact_sha256", "sam_record_stream_sha256", "sam_record_stream_identical", "byte_identical_main_artifacts", "execution_receipts", "failure_reason"],
+  "properties": {
+    "schema_version": {"const": 1}, "verification_type": {"const": "srr31989028_controlled_probe_repeatability"}, "status": {"const": "failed"}, "run_id": {"type": "string", "pattern": "^srr31989028-probe-[0-9a-f]{16}$"}, "compared_artifact_count": {"const": 16},
+    "identical_artifact_sha256": {"type": "object", "minProperties": 14, "maxProperties": 14, "additionalProperties": {"type": "string", "pattern": "^[0-9a-f]{64}$"}},
+    "different_artifact_sha256": {"type": "object", "required": ["alignment.bam", "alignment.bam.bai"], "additionalProperties": false, "properties": {"alignment.bam": {"type": "object", "required": ["run1", "run2"], "additionalProperties": false, "properties": {"run1": {"type": "string", "pattern": "^[0-9a-f]{64}$"}, "run2": {"type": "string", "pattern": "^[0-9a-f]{64}$"}}}, "alignment.bam.bai": {"type": "object", "required": ["run1", "run2"], "additionalProperties": false, "properties": {"run1": {"type": "string", "pattern": "^[0-9a-f]{64}$"}, "run2": {"type": "string", "pattern": "^[0-9a-f]{64}$"}}}}},
+    "sam_record_stream_sha256": {"type": "object", "required": ["run1", "run2"], "additionalProperties": false, "properties": {"run1": {"type": "string", "pattern": "^[0-9a-f]{64}$"}, "run2": {"type": "string", "pattern": "^[0-9a-f]{64}$"}}}, "sam_record_stream_identical": {"const": false}, "byte_identical_main_artifacts": {"const": false},
+    "execution_receipts": {"type": "object", "required": ["run1", "run2"], "additionalProperties": false, "properties": {"run1": {"$ref": "#/$defs/receipt"}, "run2": {"$ref": "#/$defs/receipt"}}},
+    "failure_reason": {"const": "BAM record stream ordering/bytes and derived BAI offsets differ across independent runs"}
+  },
+  "$defs": {
+    "identity": {
+      "type": "object",
+      "required": ["size_bytes", "sha256"],
+      "additionalProperties": false,
+      "properties": {
+        "size_bytes": {"type": "integer", "minimum": 0},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "receipt": {
+      "type": "object",
+      "required": ["identity", "invocation_id", "run_slot", "coordinator_id"],
+      "additionalProperties": false,
+      "properties": {
+        "identity": {"$ref": "#/$defs/identity"},
+        "invocation_id": {"type": "string", "format": "uuid"},
+        "run_slot": {"enum": ["run-a", "run-b"]},
+        "coordinator_id": {"type": "string", "format": "uuid"}
+      }
+    }
+  }
+}

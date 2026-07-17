@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pichia-safe-harbor/independent-transcript-source-acceptance/v1",
+  "type": "object",
+  "required": ["schema_version", "acceptance_version", "run_id", "candidate_id", "toolchain_sha256", "execution_status", "verification_status", "scientific_acceptance_status", "eligible_as_independent_transcript_source", "qualification_gates", "blocking_gates", "run_manifest", "artifacts", "verification_evidence", "stop_line"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "acceptance_version": {"const": "independent-transcript-source-v1"},
+    "run_id": {"type": "string", "pattern": "^independent-source-[0-9a-f]{16}$"},
+    "candidate_id": {"const": "prjna604658-srr11011828"},
+    "toolchain_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "execution_status": {"const": "complete"},
+    "verification_status": {"const": "passed"},
+    "scientific_acceptance_status": {"const": "blocked"},
+    "eligible_as_independent_transcript_source": {"const": false}
+  }
+}

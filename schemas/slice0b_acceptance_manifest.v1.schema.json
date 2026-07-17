@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pichia-safe-harbor/slice0b-acceptance/v1",
+  "type": "object",
+  "required": ["schema_version", "acceptance_version", "run_id", "execution_status", "verification_status", "scientific_acceptance_status", "scientific_acceptance_blockers", "primary_coordinate_space", "exact_target_strain_coordinates", "independent_transcript_source_passed", "acquisition_evidence", "run_manifest", "artifacts", "verification_evidence", "protected_evidence", "next_authoritative_action", "stop_line"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "acceptance_version": {"const": "slice0b-adr0005-v1"},
+    "run_id": {"type": "string", "pattern": "^slice0b-[0-9a-f]{16}$"},
+    "execution_status": {"const": "complete"},
+    "verification_status": {"const": "passed"},
+    "scientific_acceptance_status": {"const": "blocked"},
+    "independent_transcript_source_passed": {"const": false},
+    "primary_coordinate_space": {"const": "GCA_001746955.1"},
+    "exact_target_strain_coordinates": {"const": false},
+    "acquisition_evidence": {
+      "type": "object",
+      "required": ["path", "size_bytes", "sha256"],
+      "properties": {
+        "path": {"const": "transcript_sources/acquisition_evidence.v1.json"},
+        "size_bytes": {"type": "integer", "minimum": 1},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    }
+  }
+}

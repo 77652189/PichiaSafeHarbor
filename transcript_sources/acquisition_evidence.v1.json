@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "evidence_version": "2026-07-15.1",
+  "checked_on": "2026-07-15",
+  "timezone": "Asia/Tokyo",
+  "probes": [
+    {
+      "probe_id": "srr3201093_full_metadata",
+      "target": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=sra&id=2303147&rettype=full&retmode=xml",
+      "method": "curl.exe -L --fail --max-time 30",
+      "result": "HTTP 200; 9526 bytes saved; record contains strain Strain-B ATCC 20879, low-density 6 h methanol condition, TruSeq mRNA Stranded HT, paired 76 bp reads, RIN > 7, SRR3201093 and linked PMID 27495311",
+      "availability": "available"
+    },
+    {
+      "probe_id": "samn04506130_replicate_context",
+      "target": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=sra&retmode=json&retmax=50&term=SAMN04506130%5BBioSample%5D",
+      "method": "NCBI ESearch followed by SRA ESummary for all returned UIDs",
+      "result": "count=3: SRR3201092 labelled R1, SRR3201093 labelled R3, and SRR3182752 un-numbered; no R2 returned; biological-versus-technical replicate type and replicate completeness remain unknown",
+      "availability": "metadata-only"
+    },
+    {
+      "probe_id": "pmc4974788_publication_context",
+      "target": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4974788/fullTextXML",
+      "method": "curl.exe -L --fail --retry 3 --max-time 60",
+      "result": "HTTP 200; article states Strain-B ATCC 20864, poly(A)-enriched strand-specific cDNA from triplicate batch cultivations, and that de novo transcript models were used for initial assembly and annotation; article is CC BY 4.0 with a CC0 statement for data made available in the article",
+      "availability": "available"
+    },
+    {
+      "probe_id": "prjna304976_primary_assembly_identity",
+      "target": "NCBI Assembly ESearch PRJNA304976[BioProject] followed by ESummary UID 802721",
+      "method": "NCBI EUtils JSON APIs",
+      "result": "one assembly returned: GCA_001746955.1 ASM174695v1, Komagataella phaffii Strain-B, ATCC 20864, submitter Massachusetts Institute of Technology",
+      "availability": "available"
+    },
+    {
+      "probe_id": "srr3201093_original_bam_anonymous_https",
+      "target": "https://sra-pub-src-8.s3.amazonaws.com/SRR3201093/K_phaffii_Strain-B-A-6-M-R3.genome.sorted.bam",
+      "method": "curl.exe -L -I --fail --max-time 30",
+      "result": "HTTP 403; SRA metadata marks the original BAM as AWS Cloud Data Delivery rather than anonymous worldwide access",
+      "availability": "restricted-delivery"
+    },
+    {
+      "probe_id": "srr3201093_sra_lite_head",
+      "target": "https://sra-downloadb.be-md.ncbi.nlm.nih.gov/sos5/sra-pub-zq-11/SRR003/201/SRR3201093/SRR3201093.sralite.1",
+      "method": "curl.exe -L -I --fail --max-time 30",
+      "result": "HTTP 200; Content-Length 62223785; anonymous worldwide access",
+      "availability": "available"
+    },
+    {
+      "probe_id": "srr3201093_sra_lite_download",
+      "target": "https://sra-downloadb.be-md.ncbi.nlm.nih.gov/sos5/sra-pub-zq-11/SRR003/201/SRR3201093/SRR3201093.sralite.1",
+      "method": "curl.exe -L --fail --retry 3 --max-time 300",
+      "result": "62223785 bytes downloaded; MD5 61f210176f0766f441efb2acedc7fff0 matches the NCBI SRA XML; SHA-256 dc7bb16e503ab89511568810395d0555902da6c493ba24596da8fca854c4f327",
+      "availability": "available"
+    },
+    {
+      "probe_id": "ncbi_data_usage_policy",
+      "target": "https://www.ncbi.nlm.nih.gov/home/about/policies/",
+      "method": "curl.exe -L --fail --retry 3 --max-time 120",
+      "result": "HTTP 200; 38936-byte policy snapshot saved; NCBI states that it places no restrictions on database data use or distribution, with a submitter intellectual-property caveat",
+      "availability": "available"
+    }
+  ]
+}

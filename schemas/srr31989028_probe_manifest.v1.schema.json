@@ -1,0 +1,117 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pichia-safe-harbor/srr31989028-probe-manifest/v1",
+  "$defs": {
+    "identity": {
+      "type": "object",
+      "required": ["path", "size_bytes", "sha256"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1, "pattern": "^(?![A-Za-z]:)(?!/)(?!.*(?:^|/)\\.\\.(?:/|$)).+$"},
+        "size_bytes": {"type": "integer", "minimum": 1},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "strictIdentity": {
+      "allOf": [{"$ref": "#/$defs/identity"}],
+      "unevaluatedProperties": false
+    },
+    "read": {
+      "allOf": [{"$ref": "#/$defs/identity"}],
+      "type": "object",
+      "required": ["derived_from_sra_sha256", "pair_count", "compression"],
+      "properties": {
+        "derived_from_sra_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "pair_count": {"const": 21957417},
+        "compression": {"const": "python-gzip-zlib-level6-mtime0-empty-name"}
+      },
+      "unevaluatedProperties": false
+    },
+    "sra": {
+      "allOf": [{"$ref": "#/$defs/identity"}],
+      "type": "object",
+      "required": ["md5", "format", "lite"],
+      "properties": {
+        "md5": {"const": "8c8a58880254746890e10c68b402c875"},
+        "format": {"const": "SRA Normalized"},
+        "lite": {"const": false}
+      },
+      "unevaluatedProperties": false
+    }
+  },
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "probe_id", "run_accession", "capability_scope", "raw_data_governance", "acquisition", "reads", "reference", "tools", "parameters", "engineering_screening_rules", "fixed_windows", "fixed_windows_file", "protected_authority", "stop_line"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "probe_id": {"const": "prjna1210090-srr31989028-controlled-probe"},
+    "run_accession": {"const": "SRR31989028"},
+    "capability_scope": {
+      "const": {"coordinate_coverage": "probe", "splice_support": "probe", "strand_support": "unavailable", "boundary_support": "not-authorized", "strain_specific_support": "identity_needs_sequence_check", "biological_replication": "single-replicate-only"}
+    },
+    "raw_data_governance": {
+      "const": {"local_compute_only": true, "redistribution": false, "publish_raw_reads": false, "archive_terms": "archive-terms-with-submitter-caveat"}
+    },
+    "acquisition": {
+      "type": "object",
+      "required": ["evidence", "sra", "metadata_snapshot", "validation_status", "conversion_status", "source_url"],
+      "additionalProperties": false,
+      "properties": {
+        "evidence": {"$ref": "#/$defs/strictIdentity"},
+        "sra": {"$ref": "#/$defs/sra"},
+        "metadata_snapshot": {"$ref": "#/$defs/strictIdentity"},
+        "validation_status": {"const": "passed"},
+        "conversion_status": {"const": "passed"},
+        "source_url": {"const": "https://sra-pub-run-odp.s3.amazonaws.com/sra/SRR31989028/SRR31989028"}
+      }
+    },
+    "reads": {
+      "type": "object",
+      "required": ["read1", "read2"],
+      "additionalProperties": false,
+      "properties": {"read1": {"$ref": "#/$defs/read"}, "read2": {"$ref": "#/$defs/read"}}
+    },
+    "reference": {
+      "type": "object",
+      "required": ["assembly_accession", "manifest", "fasta", "gff", "sequence_lengths"],
+      "additionalProperties": false,
+      "properties": {
+        "assembly_accession": {"const": "GCA_001746955.1"},
+        "manifest": {"$ref": "#/$defs/strictIdentity"},
+        "fasta": {"$ref": "#/$defs/strictIdentity"},
+        "gff": {"$ref": "#/$defs/strictIdentity"},
+        "sequence_lengths": {"type": "object", "required": ["CP014715.1", "CP014716.1", "CP014717.1", "CP014718.1"], "additionalProperties": {"type": "integer", "minimum": 1}}
+      }
+    },
+    "tools": {
+      "type": "object",
+      "required": ["wsl_distribution", "versions", "hisat2_index", "univec", "univec_hisat2_index"],
+      "additionalProperties": false,
+      "properties": {
+        "wsl_distribution": {"const": "Ubuntu-24.04"},
+        "versions": {"type": "array", "minItems": 4, "items": {"type": "string", "minLength": 1}},
+        "hisat2_index": {"type": "object", "minProperties": 8, "maxProperties": 8, "additionalProperties": {"$ref": "#/$defs/strictIdentity"}},
+        "univec": {"$ref": "#/$defs/strictIdentity"},
+        "univec_hisat2_index": {"type": "object", "minProperties": 8, "maxProperties": 8, "additionalProperties": {"$ref": "#/$defs/strictIdentity"}}
+      }
+    },
+    "parameters": {
+      "const": {"hisat2": ["-p", "8", "--seed", "42", "--reorder", "--dta", "-k", "5", "--max-intronlen", "10000", "--no-temp-splicesite", "--new-summary"], "samtools_sort": ["--no-PG", "-@", "4", "-m", "1G", "-O", "BAM"], "depth": ["-aa", "-d", "0"], "input_order": ["read1", "read2"], "randomness": "HISAT2 seed 42 with --reorder; non-deterministic mode disabled"}
+    },
+    "engineering_screening_rules": {
+      "type": "object",
+      "required": ["version", "global_univec_signal_if_fraction_of_all_pairs_gte", "global_univec_signal_if_fraction_of_both_unmapped_pairs_gte", "widespread_high_depth_if_fraction_of_nuclear_1kb_bins_gte", "interpretation"],
+      "additionalProperties": false,
+      "properties": {
+        "version": {"const": "controlled-probe-v1"},
+        "global_univec_signal_if_fraction_of_all_pairs_gte": {"const": 0.01},
+        "global_univec_signal_if_fraction_of_both_unmapped_pairs_gte": {"const": 0.1},
+        "widespread_high_depth_if_fraction_of_nuclear_1kb_bins_gte": {"const": 0.05},
+        "interpretation": {"const": "probe QC descriptors only; not safe-harbor, expression, or boundary thresholds"}
+      }
+    },
+    "fixed_windows": {"type": "array", "minItems": 12, "maxItems": 12, "items": {"type": "object", "required": ["window_id", "reference", "start_0based", "end_0based", "position_class", "endpoint_caveat"]}},
+    "fixed_windows_file": {"$ref": "#/$defs/strictIdentity"},
+    "protected_authority": {"type": "object", "required": ["slice0", "slice0a", "slice0b", "prjna604658", "prjna1210090_metadata"], "additionalProperties": false, "properties": {"slice0": {"$ref": "#/$defs/strictIdentity"}, "slice0a": {"$ref": "#/$defs/strictIdentity"}, "slice0b": {"$ref": "#/$defs/strictIdentity"}, "prjna604658": {"$ref": "#/$defs/strictIdentity"}, "prjna1210090_metadata": {"$ref": "#/$defs/strictIdentity"}}},
+    "stop_line": {"const": "single SRR31989028 probe only; do not download other replicates, create a boundary track, generate candidates or thresholds, or enter Slice 1"}
+  }
+}

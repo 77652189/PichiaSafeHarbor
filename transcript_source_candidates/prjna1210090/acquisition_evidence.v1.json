@@ -1,0 +1,86 @@
+{
+  "acquired_at_utc": "2026-07-15T04:42:58.766369+00:00",
+  "candidate_id": "prjna1210090-srp557139-wt-no-stress",
+  "raw_read_acquisition": {
+    "declared_identities_source": "ena_read_run",
+    "reason": "metadata hard gates must pass before downloading approximately 14.8 GB of selected paired FASTQ files",
+    "status": "not-performed"
+  },
+  "requests": {
+    "bioproject": {
+      "content_type": "text/xml; charset=UTF-8",
+      "http_status": 200,
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=bioproject&id=1210090&retmode=xml"
+    },
+    "ena_read_run": {
+      "content_type": "application/json",
+      "http_status": 200,
+      "url": "https://www.ebi.ac.uk/ena/portal/api/filereport?accession=SRP557139&result=read_run&format=json&fields=study_accession%2Csecondary_study_accession%2Cexperiment_accession%2Csample_accession%2Csecondary_sample_accession%2Crun_accession%2Clibrary_strategy%2Clibrary_source%2Clibrary_selection%2Clibrary_layout%2Cinstrument_model%2Cread_count%2Cbase_count%2Cfastq_bytes%2Cfastq_md5%2Cfastq_ftp"
+    },
+    "ena_terms": {
+      "content_type": "text/html; charset=UTF-8",
+      "http_status": 200,
+      "url": "https://www.ebi.ac.uk/about/terms-of-use"
+    },
+    "ncbi_policy": {
+      "content_type": "text/html",
+      "http_status": 200,
+      "url": "https://www.ncbi.nlm.nih.gov/home/about/policies/"
+    },
+    "sra_esearch": {
+      "content_type": "application/json; charset=UTF-8",
+      "http_status": 200,
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=sra&term=SRP557139%5BAll+Fields%5D&retmax=100&retmode=json"
+    },
+    "sra_experiment_packages": {
+      "content_type": "text/xml",
+      "http_status": 200,
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=sra&id=36888590%2C36888589%2C36888588%2C36888587%2C36888586%2C36888585%2C36888584%2C36888583%2C36888582%2C36888581%2C36888580%2C36888579%2C36888578%2C36888577%2C36888576%2C36888575%2C36888574%2C36888573%2C36888572%2C36888571%2C36888570%2C36888569%2C36888568%2C36888567%2C36888566%2C36888565%2C36888564&retmode=xml"
+    }
+  },
+  "schema_version": 1,
+  "selected_runs": {
+    "SRR31989016": {
+      "experiment": "SRX27343955",
+      "replicate": "3",
+      "sample": "SAMN46238833"
+    },
+    "SRR31989027": {
+      "experiment": "SRX27343944",
+      "replicate": "2",
+      "sample": "SAMN46238832"
+    },
+    "SRR31989028": {
+      "experiment": "SRX27343943",
+      "replicate": "1",
+      "sample": "SAMN46238831"
+    }
+  },
+  "snapshots": {
+    "bioproject": {
+      "path": "local_runs/independent_transcript_sources/prjna1210090/source_files/bioproject_1210090.xml",
+      "sha256": "2aa1b3a2487bf118926caba28a10f11ef8e6d0d5304cf7850e2017038230a3a8",
+      "size_bytes": 3411
+    },
+    "ena_read_run": {
+      "path": "local_runs/independent_transcript_sources/prjna1210090/source_files/ena_read_run.json",
+      "sha256": "9968c359608447e7dd2ab5a6998510ce486387afca331c99bf7bba9d59d7c08a",
+      "size_bytes": 19091
+    },
+    "ena_terms": {
+      "path": "local_runs/independent_transcript_sources/prjna1210090/source_files/ena_terms_of_use.html",
+      "sha256": "29b7d5a384dd7e9520003fbf6b7a9a3c255da618a6c509bb76da84b0e9fe0529",
+      "size_bytes": 21379
+    },
+    "ncbi_policy": {
+      "path": "local_runs/independent_transcript_sources/prjna1210090/source_files/ncbi_policies.html",
+      "sha256": "8ad8f6f186ca51ec73a5fb8935ecfa17b8cbaad300b7025b381898ab72621869",
+      "size_bytes": 38936
+    },
+    "sra_experiment_packages": {
+      "path": "local_runs/independent_transcript_sources/prjna1210090/source_files/sra_experiment_packages.xml",
+      "sha256": "00e60eeea2a5bc1574974476890ad4cc2965ddc5c8fbe8600f53d3ee351d1af5",
+      "size_bytes": 261436
+    }
+  }
+}

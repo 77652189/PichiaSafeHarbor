@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pichia-safe-harbor/slice0a-acceptance/v1",
+  "type": "object",
+  "required": ["schema_version", "acceptance_version", "run_id", "execution_status", "verification_status", "scientific_acceptance_status", "scientific_acceptance_blockers", "run_manifest", "artifacts", "verification_evidence", "next_authoritative_action"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "acceptance_version": {"const": "slice0a-adr0004-v1"},
+    "run_id": {"type": "string", "pattern": "^slice0a-[0-9a-f]{16}$"},
+    "execution_status": {"const": "complete"},
+    "verification_status": {"const": "passed"},
+    "scientific_acceptance_status": {"const": "blocked"},
+    "scientific_acceptance_blockers": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "run_manifest": {"type": "object"},
+    "artifacts": {"type": "object"},
+    "verification_evidence": {"type": "object"},
+    "next_authoritative_action": {"type": "string"}
+  }
+}

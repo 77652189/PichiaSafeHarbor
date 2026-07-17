@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "candidate_id": "prjna604658-srr11011828",
+  "retrieved_date": "2026-07-15",
+  "persistent_sources": [
+    {
+      "role": "SRA experiment packages",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=sra&id=10010044,10010045&rettype=full&retmode=xml"
+    },
+    {
+      "role": "ENA read-run report",
+      "url": "https://www.ebi.ac.uk/ena/portal/api/filereport?accession=PRJNA604658&result=read_run&format=json"
+    },
+    {
+      "role": "NCBI normalized SRA",
+      "url": "https://sra-pub-run-odp.s3.amazonaws.com/sra/SRR11011828/SRR11011828"
+    },
+    {
+      "role": "BioProject",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=bioproject&id=604658&retmode=xml"
+    },
+    {
+      "role": "PubMed",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=32737719&retmode=xml"
+    },
+    {
+      "role": "Crossref",
+      "url": "https://api.crossref.org/works/10.1007/s10529-020-02977-z"
+    }
+  ],
+  "download_method": {
+    "description": "The normalized SRA was retrieved with HTTP Range requests and concatenated in byte order after direct and prefetch transfers repeatedly stalled.",
+    "expected_size_bytes": 269534161,
+    "expected_md5": "8934fb7ddeb88ff1142bfd361e503347",
+    "actual_size_bytes": 269534161,
+    "actual_md5": "8934fb7ddeb88ff1142bfd361e503347",
+    "actual_sha256": "28f423bdbbd28d8473692cb10298030d1aaf7bf095fddbe65d450d4b6c93e2f1"
+  },
+  "rendition_distinction": {
+    "selected": "NCBI SRA Normalized, 269534161 bytes, MD5 8934fb7ddeb88ff1142bfd361e503347",
+    "ncbi_original_fastq": "WT.clean.fq.gz, 378189462 bytes, MD5 4a9fd4ce973464431188d941278f5a08",
+    "ena_fastq": "SRR11011828.fastq.gz, 363287600 bytes, MD5 4b26d1064a9f0affb91899f4803fc7c6",
+    "interpretation": "These are different archive renditions; their URLs, sizes and checksums must not be mixed."
+  },
+  "license_evidence": {
+    "raw_file_license_assignment": "unresolved",
+    "article_license_urls": [
+      "https://www.springer.com/tdm",
+      "https://www.springer.com/tdm"
+    ],
+    "interpretation": "Springer TDM terms concern article use and are not promoted to a license for the SRA or FASTQ file. Database access policies are not treated as per-file licenses."
+  }
+}

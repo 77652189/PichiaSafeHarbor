@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pichia-safe-harbor/srr31989028-acquisition-evidence/v1",
+  "$defs": {
+    "identity": {
+      "type": "object",
+      "required": ["path", "size_bytes", "sha256"],
+      "additionalProperties": false,
+      "properties": {
+        "path": {"type": "string", "minLength": 1, "pattern": "^(?![A-Za-z]:)(?!/)(?!.*(?:^|/)\\.\\.(?:/|$)).+$"},
+        "size_bytes": {"type": "integer", "minimum": 0},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "fingerprint": {
+      "type": "object",
+      "required": ["size_bytes", "sha256"],
+      "additionalProperties": false,
+      "properties": {
+        "size_bytes": {"type": "integer", "minimum": 1},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "command": {
+      "type": "object",
+      "required": ["argv", "cwd", "started_at_utc", "completed_at_utc", "exit_code", "stdout", "stderr", "status"],
+      "properties": {
+        "argv": {"type": "array", "minItems": 2, "items": {"type": "string"}},
+        "cwd": {"type": "string", "minLength": 1},
+        "started_at_utc": {"type": "string", "format": "date-time"},
+        "completed_at_utc": {"type": "string", "format": "date-time"},
+        "exit_code": {"const": 0},
+        "stdout": {"$ref": "#/$defs/identity"},
+        "stderr": {"$ref": "#/$defs/identity"},
+        "status": {"const": "passed"}
+      }
+    }
+  },
+  "type": "object",
+  "required": ["schema_version", "acquisition_method", "run_accession", "source", "download_receipt", "sra", "validation", "conversion", "compression", "reads", "forbidden_replicates_present", "completed_at_utc"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"const": 1},
+    "acquisition_method": {"const": "ncbi-aws-normalized-sra-to-deterministic-paired-fastq"},
+    "run_accession": {"const": "SRR31989028"},
+    "source": {
+      "type": "object",
+      "required": ["url", "declared_size_bytes", "declared_md5", "metadata_snapshot"],
+      "additionalProperties": false,
+      "properties": {
+        "url": {"const": "https://sra-pub-run-odp.s3.amazonaws.com/sra/SRR31989028/SRR31989028"},
+        "declared_size_bytes": {"const": 3931837205},
+        "declared_md5": {"const": "8c8a58880254746890e10c68b402c875"},
+        "metadata_snapshot": {"$ref": "#/$defs/identity"}
+      }
+    },
+    "download_receipt": {"$ref": "#/$defs/identity"},
+    "sra": {
+      "type": "object",
+      "required": ["path", "size_bytes", "sha256", "md5", "format", "lite"],
+      "additionalProperties": false,
+      "properties": {
+        "path": {"const": "local_runs/controlled_probe/prjna1210090_srr31989028/raw/SRR31989028.sra"},
+        "size_bytes": {"const": 3931837205},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "md5": {"const": "8c8a58880254746890e10c68b402c875"},
+        "format": {"const": "SRA Normalized"},
+        "lite": {"const": false}
+      }
+    },
+    "validation": {
+      "allOf": [{"$ref": "#/$defs/command"}],
+      "required": ["tool", "version"],
+      "properties": {"tool": {"$ref": "#/$defs/identity"}, "version": {"const": "3.4.1"}},
+      "unevaluatedProperties": false
+    },
+    "conversion": {
+      "allOf": [{"$ref": "#/$defs/command"}],
+      "required": ["tool", "version", "threads", "uncompressed_reads", "statistics"],
+      "properties": {
+        "tool": {"$ref": "#/$defs/identity"}, "version": {"const": "3.4.1"}, "threads": {"const": 8},
+        "uncompressed_reads": {"type": "object", "required": ["read1", "read2"], "additionalProperties": false, "properties": {"read1": {"$ref": "#/$defs/fingerprint"}, "read2": {"$ref": "#/$defs/fingerprint"}}},
+        "statistics": {"const": {"pair_count": 21957417, "read_count_per_file": 21957417, "total_bases": 6587225100}}
+      },
+      "unevaluatedProperties": false
+    },
+    "compression": {
+      "allOf": [{"$ref": "#/$defs/command"}],
+      "required": ["tool", "version", "parameters"],
+      "properties": {"tool": {"const": "python-standard-library:gzip.GzipFile"}, "version": {"type": "string", "pattern": "^Python 3\\.12\\.[0-9]+; zlib [0-9.]+$"}, "parameters": {"const": ["compresslevel=6", "mtime=0", "filename="]}},
+      "unevaluatedProperties": false
+    },
+    "reads": {"type": "object", "required": ["read1", "read2"], "additionalProperties": false, "properties": {"read1": {"$ref": "#/$defs/identity"}, "read2": {"$ref": "#/$defs/identity"}}},
+    "forbidden_replicates_present": {"const": false},
+    "completed_at_utc": {"type": "string", "format": "date-time"}
+  }
+}

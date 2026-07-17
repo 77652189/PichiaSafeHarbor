@@ -1,0 +1,148 @@
+{
+  "schema_version": 1,
+  "manifest_version": "2026-07-15.1",
+  "slice": "Slice 0B experimental evidence qualification",
+  "primary_coordinate_space": "GCA_001746955.1",
+  "target_strain": "Strain-T",
+  "exact_target_strain_coordinates": false,
+  "acquisition_evidence": "transcript_sources/acquisition_evidence.v1.json",
+  "sources": [
+    {
+      "source_id": "strain-b_prjna311606_srr3201093",
+      "evidence_type": "strand-specific short-read RNA-seq",
+      "source_version": "NCBI SRA public record retrieved 2026-07-15",
+      "study_accession": "SRP070669",
+      "bioproject_accession": "PRJNA311606",
+      "experiment_accession": "SRX1610889",
+      "biosample_accession": "SAMN04506130",
+      "sra_sample_accession": "SRS1306819",
+      "run_accession": "SRR3201093",
+      "publication": {
+        "pmid": "27495311",
+        "pmcid": "PMC4974788",
+        "doi": "10.1186/s12864-016-2876-y",
+        "article_license": "CC BY 4.0",
+        "data_waiver_statement": "CC0 applies to data made available in the article unless otherwise stated; this is not treated as an explicit license assignment for external SRA files",
+        "status": "linked by the NCBI SRA study record"
+      },
+      "organism": "Komagataella phaffii",
+      "strain": "Strain-B, ATCC 20879",
+      "strain_identity": {
+        "archive_label": "Strain-B, ATCC 20879",
+        "publication_label": "Strain-B, ATCC 20864",
+        "locked_assembly_label": "Strain-B, ATCC 20864",
+        "status": "Strain-B label agrees, but the archive ATCC secondary identifier conflicts with the publication and locked assembly",
+        "secondary_identifier_usable": false
+      },
+      "strain_applicability": "Strain-B label matches the primary-reference strain, but the ATCC identifier conflict is unresolved; not Strain-T",
+      "experimental_condition": {
+        "sample_title": "K_phaffii_Strain-B low density 6h methanol",
+        "carbon_source": "methanol",
+        "cultivation_time": "6 h",
+        "density": "low density",
+        "biological_or_technical_replicate": "R3; replicate type is not stated in the archive metadata",
+        "replicate_context": {
+          "same_biosample_runs": [
+            {"experiment_accession": "SRX1610888", "run_accession": "SRR3201092", "label": "R1"},
+            {"experiment_accession": "SRX1610889", "run_accession": "SRR3201093", "label": "R3"},
+            {"experiment_accession": "SRX1596791", "run_accession": "SRR3182752", "label": "un-numbered"}
+          ],
+          "interpretation": "two runs are explicitly labelled R1 and R3 and one is un-numbered; R2 was not returned by the BioSample query, and biological-versus-technical replicate type and completeness remain unknown"
+        },
+        "collection_year": "2014",
+        "location": "USA"
+      },
+      "library": {
+        "strategy": "RNA-Seq",
+        "source": "TRANSCRIPTOMIC",
+        "selection": "unspecified",
+        "layout": "PAIRED",
+        "read_count_per_spot": 2,
+        "mean_read_length_bases": 76,
+        "total_spots": 3648637,
+        "total_bases": 554592824,
+        "platform": "ILLUMINA",
+        "instrument": "NextSeq 550",
+        "preparation_kit": "TruSeq mRNA Stranded HT",
+        "strand_specificity": "explicitly stranded by library kit metadata",
+        "strand_orientation_convention": "unknown; not stated by the archive metadata and not inferred",
+        "rna_extraction": "RNeasy Kit (Qiagen, Cat. #74104)",
+        "quality_gate": "RNA Integrity Number greater than 7"
+      },
+      "coordinate_identity": {
+        "archive_alignment_names": ["chr1", "chr2", "chr3", "chr4", "SC1", "SC2", "SC3", "SC4", "SC5", "KP"],
+        "archive_alignment_coordinate_space": "unverified legacy submitter reference",
+        "same_study_primary_assembly": "GCA_001746955.1",
+        "same_study_assembly_bioproject": "PRJNA304976",
+        "annotation_provenance_overlap": true,
+        "provenance_note": "the publication states that de novo assembled transcript models were used for initial assembly and annotation; this source is a coordinate-positive control but not independent of the current annotation-generation process",
+        "primary_coordinate_compatibility": "pending explicit probe against GCA_001746955.1",
+        "direct_primary_coordinate_use": false
+      },
+      "independence": {
+        "provider": "Massachusetts Institute of Technology",
+        "relationship": "wet-lab transcript evidence with provenance overlap to the current assembly and initial annotation",
+        "independence_group": "prjna311606_strain-b_assembly_annotation_transcriptomics",
+        "annotation_provenance_overlap": true,
+        "qualification": "partial; not sufficient as the sole independent transcript source"
+      },
+      "persistent_sources": {
+        "sra_record": "https://www.ncbi.nlm.nih.gov/sra/SRX1610889",
+        "bioproject": "https://www.ncbi.nlm.nih.gov/bioproject/PRJNA311606",
+        "biosample": "https://www.ncbi.nlm.nih.gov/biosample/SAMN04506130",
+        "sra_lite": "https://sra-downloadb.be-md.ncbi.nlm.nih.gov/sos5/sra-pub-zq-11/SRR003/201/SRR3201093/SRR3201093.sralite.1"
+      },
+      "license": {
+        "file_license_assignment": "not-explicitly-assigned",
+        "database_usage_terms": "NCBI-no-restrictions-with-submitter-IP-caveat",
+        "database_usage_terms_url": "https://www.ncbi.nlm.nih.gov/home/about/policies/",
+        "qualification": "unresolved; database access terms are known, but no explicit per-file license is inferred",
+        "interpretation": "NCBI places no restrictions on database data use or distribution but cannot transfer rights claimed by submitters; the article CC BY/CC0 statements are not extended to the external SRA file without explicit evidence"
+      },
+      "files": {
+        "sra_lite": {
+          "path": "local_runs/slice0b/source_archives/SRR3201093/SRR3201093.sralite.1",
+          "size_bytes": 62223785,
+          "archive_md5": "61f210176f0766f441efb2acedc7fff0",
+          "actual_md5": "61f210176f0766f441efb2acedc7fff0",
+          "sha256": "dc7bb16e503ab89511568810395d0555902da6c493ba24596da8fca854c4f327"
+        },
+        "sra_metadata_xml": {
+          "path": "local_runs/slice0b/source_metadata/SRR3201093/SRR3201093.sra.xml",
+          "size_bytes": 9526,
+          "sha256": "40b2d422c28b5e153abe0b64e182576d4ad1730c14778c06195a632e50b6bf76"
+        },
+        "ncbi_data_usage_policy": {
+          "path": "local_runs/slice0b/source_metadata/SRR3201093/ncbi_data_usage_policy.html",
+          "size_bytes": 38936,
+          "sha256": "8ad8f6f186ca51ec73a5fb8935ecfa17b8cbaad300b7025b381898ab72621869"
+        },
+        "publication_fulltext": {
+          "path": "local_runs/slice0b/source_metadata/SRR3201093/PMC4974788.fulltext.xml",
+          "size_bytes": 158571,
+          "sha256": "15922519760c7af6a5501e404f713f71abd323a0f6bc322399465eb172ccea41"
+        },
+        "primary_assembly_search": {
+          "path": "local_runs/slice0b/source_metadata/SRR3201093/PRJNA304976.assembly_esearch.json",
+          "size_bytes": 300,
+          "sha256": "719b290c4b36cb5f2b3f7ced138ba1ca40aecd32af7383e22f31026449020bf7"
+        },
+        "primary_assembly_summary": {
+          "path": "local_runs/slice0b/source_metadata/SRR3201093/PRJNA304976.assembly_esummary.json",
+          "size_bytes": 4077,
+          "sha256": "fd4cff8f01e15470185773e74c18af5a40fe4439a39ea1f0f59d61bec5beb3ff"
+        }
+      },
+      "qualification_status": "file-identity-qualified_independence-license-mapping-pending",
+      "qualification_reasons": [
+        "Strain-B label, culture condition, stranded library kit, paired layout, read length and RIN gate are explicitly recorded",
+        "downloaded SRA Lite size and MD5 match the NCBI archive record and a local SHA-256 is recorded",
+        "archive ATCC 20879 conflicts with publication and assembly ATCC 20864",
+        "the transcript data contributed to initial assembly and annotation, so annotation independence is partial rather than passed",
+        "no explicit per-file SRA license is assigned; NCBI database usage terms are recorded but not promoted to a file license",
+        "strand orientation convention and replicate completeness remain unknown and must not be inferred",
+        "compatibility with locked GCA_001746955.1 coordinates remains pending a four-chromosome probe"
+      ]
+    }
+  ]
+}

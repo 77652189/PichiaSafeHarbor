@@ -1,0 +1,8 @@
+[client]
+# Internal single-purpose tool, not something to be deployed from the browser
+# by an end user -- hide the "Deploy" button and trim the "..." menu to just
+# the basics (rerun / clear cache / about).
+toolbarMode = "viewer"
+
+[browser]
+gatherUsageStats = false

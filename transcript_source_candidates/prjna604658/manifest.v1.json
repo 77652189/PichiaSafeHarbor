@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "candidate_id": "prjna604658-srr11011828",
+  "accessions": {
+    "bioproject": "PRJNA604658",
+    "study": "SRP247014",
+    "experiment": "SRX7669278",
+    "sample": "SAMN13978086",
+    "run": "SRR11011828",
+    "publication_doi": "10.1007/s10529-020-02977-z",
+    "pmid": "32737719"
+  },
+  "protected_authority": {
+    "slice0": {
+      "path": "local_runs/strain-b_slice0_completion_v6_run1/acceptance_manifest.json",
+      "size_bytes": 7175,
+      "sha256": "f04ac9119a891885dfd7f883484f5fe1ddbfea6a1895bcd353b604dec2b294b0"
+    },
+    "slice0a": {
+      "path": "local_runs/slice0a/qualification_v5_run1/acceptance_manifest.json",
+      "size_bytes": 2120,
+      "sha256": "564324ad63ceb22e6728e85b09bfbcfc625ad39df3048702bc99d47c507e4b78"
+    },
+    "slice0b": {
+      "path": "local_runs/slice0b/qualification_v5_run1/acceptance_manifest.json",
+      "size_bytes": 2864,
+      "sha256": "83bdf169bbfa3dcfbf7b1299175fb70f27f72e3c4388672703a9df9e4c7942f3"
+    }
+  },
+  "files": {
+    "acquisition_evidence": {
+      "path": "transcript_source_candidates/prjna604658/acquisition_evidence.v1.json",
+      "size_bytes": 2301,
+      "sha256": "6ebb623ef2f287b2396efbb2aeb95523927fbcb56121662ef02858f96d87393a"
+    },
+    "sra_normalized": {
+      "path": "local_runs/independent_transcript_sources/prjna604658/source_files/SRR11011828.sra",
+      "size_bytes": 269534161,
+      "sha256": "28f423bdbbd28d8473692cb10298030d1aaf7bf095fddbe65d450d4b6c93e2f1",
+      "declared_md5": "8934fb7ddeb88ff1142bfd361e503347",
+      "rendition": "NCBI SRA Normalized; not the ENA FASTQ or submitter original FASTQ"
+    },
+    "sra_experiment_packages": {
+      "path": "local_runs/independent_transcript_sources/prjna604658/source_files/sra_experiment_packages.xml",
+      "size_bytes": 17380,
+      "sha256": "6502bdcef9599187b13868d0246469ea620f0eac60d76a1037858f4e87efc473"
+    },
+    "ena_read_run": {
+      "path": "local_runs/independent_transcript_sources/prjna604658/source_files/ena_read_run.json",
+      "size_bytes": 1211,
+      "sha256": "e9043e8b0978c1981f0f43f63896f04b36a3e9bf6dfa3b20b1dbe74037f435d1"
+    },
+    "bioproject": {
+      "path": "local_runs/independent_transcript_sources/prjna604658/source_files/bioproject_604658.xml",
+      "size_bytes": 2898,
+      "sha256": "5f9293c1e5172b4a084655dc979e6a057126b2bc0b61af1de49d608e95606974"
+    },
+    "pubmed_publication": {
+      "path": "local_runs/independent_transcript_sources/prjna604658/source_files/pubmed_32737719.xml",
+      "size_bytes": 12026,
+      "sha256": "57f6211d9d39ab8122d0cbd068bb1c7cdce5801726f2a5465f9cbe3761e8c0a2"
+    },
+    "crossref_publication": {
+      "path": "local_runs/independent_transcript_sources/prjna604658/source_files/crossref_10.1007_s10529-020-02977-z.json",
+      "size_bytes": 10972,
+      "sha256": "03f5a492fae59ad77f67d8b9f9fdc440d606ceb476abd86db280ce432e35c4b6"
+    }
+  }
+}

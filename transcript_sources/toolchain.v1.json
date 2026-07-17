@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "toolchain_version": "2026-07-15.1",
+  "tools": {
+    "sra_toolkit": {
+      "name": "NCBI SRA Toolkit",
+      "version": "3.4.1",
+      "source_url": "https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/current/sratoolkit.current-win64.zip",
+      "archive": {
+        "path": "local_runs/slice0b/tools/sratoolkit/sratoolkit.current-win64.zip",
+        "size_bytes": 46517752,
+        "sha256": "815b1494047a2f245182d1792fbbc847165823f5616189874093333c024eacc5"
+      },
+      "sam_dump": {
+        "path": "local_runs/slice0b/tools/sratoolkit/sratoolkit.3.4.1-win64/bin/sam-dump.exe",
+        "size_bytes": 3468800,
+        "sha256": "bd1193ee92ee451741feec9fadbbc7fa482856ff8e91692475f213705ddf452a"
+      }
+    }
+  },
+  "probe_parameters": {
+    "probe_mode": "submitted_alignment_coordinate_probe",
+    "source_sequence_map": {
+      "chr1": "CP014715.1",
+      "chr2": "CP014716.1",
+      "chr3": "CP014717.1",
+      "chr4": "CP014718.1"
+    },
+    "windows_per_chromosome": ["start", "middle", "end"],
+    "window_length_bases": 2000,
+    "max_sam_records_per_window": 100,
+    "minimum_reference_identity": 0.8,
+    "endpoint_distance_bases": 5000,
+    "sam_header_length_normalization": "raw LN modulo 2^31; the SRA Lite sam-dump header contains a reproducible 10*2^31 offset",
+    "transcription_strand_inference": "disabled because archive metadata does not state the first/second-strand orientation convention"
+    ,
+    "quality_gate_limitations": "no controlled read remapping; submitted NH/NM/CIGAR values are diagnostic only; controlled uniqueness, splice evidence, true unmappable reads and contamination remain unavailable"
+  }
+}

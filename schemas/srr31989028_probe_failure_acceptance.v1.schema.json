@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pichia-safe-harbor/srr31989028-probe-failure-acceptance/v1",
+  "$defs": {
+    "identity": {"type": "object", "required": ["size_bytes", "sha256"], "additionalProperties": false, "properties": {"size_bytes": {"type": "integer", "minimum": 0}, "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}}},
+    "testEvidence": {"type": "object", "required": ["size_bytes", "sha256", "passed_count"], "additionalProperties": false, "properties": {"size_bytes": {"type": "integer", "minimum": 0}, "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}, "passed_count": {"type": "integer", "minimum": 1}}}
+  },
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "acceptance_version", "run_id", "probe_id", "probe_acceptance_status", "execution_status", "verification_status", "scientific_acceptance_status", "failure_reasons", "capabilities", "strand_support", "single_replicate_only", "three_replicate_evidence", "formal_boundary_track", "input_manifest", "acquisition_evidence", "source_sra", "run_manifests", "artifacts_by_run", "verification_evidence", "execution_receipts", "repeatability_evidence", "protected_evidence", "acceptance_tool_sha256", "stop_line"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "acceptance_version": {"const": "srr31989028-controlled-probe-failure-v1"},
+    "run_id": {"type": "string", "pattern": "^srr31989028-probe-[0-9a-f]{16}$"},
+    "probe_id": {"const": "prjna1210090-srr31989028-controlled-probe"},
+    "probe_acceptance_status": {"const": "failed"},
+    "execution_status": {"const": "complete"},
+    "verification_status": {"const": "passed"},
+    "scientific_acceptance_status": {"const": "blocked"},
+    "failure_reasons": {"const": ["widespread-high-depth-engineering-screen", "bam-bai-byte-repeatability"]},
+    "capabilities": {"const": {"coordinate_coverage": "passed", "splice_support": "passed", "strand_support": "unavailable", "boundary_support": "not-authorized", "strain_specific_support": "unavailable", "biological_replication": "single-replicate-only", "unique_multi_unmapped_classification": "passed", "engineering_screen": "failed"}},
+    "strand_support": {"const": "unavailable"},
+    "single_replicate_only": {"const": true},
+    "three_replicate_evidence": {"const": false},
+    "formal_boundary_track": {"const": false},
+    "input_manifest": {"$ref": "#/$defs/identity"},
+    "acquisition_evidence": {"$ref": "#/$defs/identity"},
+    "source_sra": {"$ref": "#/$defs/identity"},
+    "run_manifests": {"type": "object", "required": ["run1", "run2"], "additionalProperties": false, "properties": {"run1": {"$ref": "#/$defs/identity"}, "run2": {"$ref": "#/$defs/identity"}}},
+    "artifacts_by_run": {"type": "object", "required": ["run1", "run2"], "additionalProperties": false, "properties": {"run1": {"type": "object", "minProperties": 16, "additionalProperties": {"$ref": "#/$defs/identity"}}, "run2": {"type": "object", "minProperties": 16, "additionalProperties": {"$ref": "#/$defs/identity"}}}},
+    "verification_evidence": {"type": "object", "required": ["run1_independent", "run2_independent", "run1_tests", "run2_tests"], "additionalProperties": false, "properties": {"run1_independent": {"$ref": "#/$defs/identity"}, "run2_independent": {"$ref": "#/$defs/identity"}, "run1_tests": {"$ref": "#/$defs/testEvidence"}, "run2_tests": {"$ref": "#/$defs/testEvidence"}}},
+    "execution_receipts": {"type": "object", "required": ["run1", "run2"], "additionalProperties": false, "properties": {"run1": {"$ref": "#/$defs/identity"}, "run2": {"$ref": "#/$defs/identity"}}},
+    "repeatability_evidence": {"$ref": "#/$defs/identity"},
+    "protected_evidence": {"type": "object", "minProperties": 5},
+    "acceptance_tool_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "stop_line": {"const": "single SRR31989028 probe failed; remain blocked and do not download other replicates, create a boundary track, generate candidates or thresholds, or enter Slice 1"}
+  }
+}

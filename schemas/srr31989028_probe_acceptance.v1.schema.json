@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pichia-safe-harbor/srr31989028-probe-acceptance/v1",
+  "$defs": {
+    "identity": {"type": "object", "required": ["size_bytes", "sha256"], "additionalProperties": false, "properties": {"size_bytes": {"type": "integer", "minimum": 0}, "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}}},
+    "testEvidence": {"type": "object", "required": ["size_bytes", "sha256", "passed_count"], "additionalProperties": false, "properties": {"size_bytes": {"type": "integer", "minimum": 0}, "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}, "passed_count": {"type": "integer", "minimum": 1}}},
+    "protectedEvidence": {"type": "object", "required": ["acceptance_sha256", "run_manifest_sha256", "artifact_sha256"], "additionalProperties": false, "properties": {"acceptance_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}, "run_manifest_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}, "artifact_sha256": {"type": "object", "minProperties": 1, "additionalProperties": {"type": "string", "pattern": "^[0-9a-f]{64}$"}}}}
+  },
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "acceptance_version", "run_id", "probe_id", "probe_acceptance_status", "execution_status", "verification_status", "scientific_acceptance_status", "capabilities", "strand_support", "single_replicate_only", "three_replicate_evidence", "formal_boundary_track", "input_manifest", "acquisition_evidence", "source_sra", "run_manifest", "artifacts", "verification_evidence", "protected_evidence", "stop_line"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "acceptance_version": {"const": "srr31989028-controlled-probe-v1"},
+    "run_id": {"type": "string", "pattern": "^srr31989028-probe-[0-9a-f]{16}$"},
+    "probe_id": {"const": "prjna1210090-srr31989028-controlled-probe"},
+    "probe_acceptance_status": {"const": "passed"},
+    "execution_status": {"const": "complete"},
+    "verification_status": {"const": "passed"},
+    "scientific_acceptance_status": {"const": "blocked"},
+    "strand_support": {"const": "unavailable"},
+    "single_replicate_only": {"const": true},
+    "three_replicate_evidence": {"const": false},
+    "formal_boundary_track": {"const": false},
+    "capabilities": {"const": {"coordinate_coverage": "passed", "splice_support": "passed", "strand_support": "unavailable", "boundary_support": "not-authorized", "strain_specific_support": "unavailable", "biological_replication": "single-replicate-only", "unique_multi_unmapped_classification": "passed", "engineering_screen": "passed-with-explicit-local-exclusions"}},
+    "input_manifest": {"$ref": "#/$defs/identity"},
+    "acquisition_evidence": {"$ref": "#/$defs/identity"},
+    "source_sra": {"$ref": "#/$defs/identity"},
+    "run_manifest": {"$ref": "#/$defs/identity"},
+    "artifacts": {
+      "type": "object",
+      "required": ["alignment.bam", "alignment.bam.bai", "hisat2_summary.txt", "hisat2_stderr.txt", "flagstat.json", "samtools_stats.txt", "pair_mapping_summary.json", "splice_junctions.tsv", "coverage_summary.json", "coverage_windows.tsv", "coverage_anomalies.tsv", "univec_all_pairs_summary.txt", "univec_both_unmapped_summary.txt", "engineering_impact.json", "capability_report.json", "capability_report.md"],
+      "additionalProperties": false,
+      "properties": {
+        "alignment.bam": {"$ref": "#/$defs/identity"}, "alignment.bam.bai": {"$ref": "#/$defs/identity"}, "hisat2_summary.txt": {"$ref": "#/$defs/identity"}, "hisat2_stderr.txt": {"$ref": "#/$defs/identity"}, "flagstat.json": {"$ref": "#/$defs/identity"}, "samtools_stats.txt": {"$ref": "#/$defs/identity"}, "pair_mapping_summary.json": {"$ref": "#/$defs/identity"}, "splice_junctions.tsv": {"$ref": "#/$defs/identity"}, "coverage_summary.json": {"$ref": "#/$defs/identity"}, "coverage_windows.tsv": {"$ref": "#/$defs/identity"}, "coverage_anomalies.tsv": {"$ref": "#/$defs/identity"}, "univec_all_pairs_summary.txt": {"$ref": "#/$defs/identity"}, "univec_both_unmapped_summary.txt": {"$ref": "#/$defs/identity"}, "engineering_impact.json": {"$ref": "#/$defs/identity"}, "capability_report.json": {"$ref": "#/$defs/identity"}, "capability_report.md": {"$ref": "#/$defs/identity"}
+      }
+    },
+    "verification_evidence": {"type": "object", "required": ["independent", "automated_tests", "repeatability"], "additionalProperties": false, "properties": {"independent": {"$ref": "#/$defs/identity"}, "automated_tests": {"$ref": "#/$defs/testEvidence"}, "repeatability": {"$ref": "#/$defs/identity"}}},
+    "protected_evidence": {"type": "object", "required": ["slice0", "slice0a", "slice0b", "prjna604658", "prjna1210090_metadata"], "additionalProperties": false, "properties": {"slice0": {"$ref": "#/$defs/protectedEvidence"}, "slice0a": {"$ref": "#/$defs/protectedEvidence"}, "slice0b": {"$ref": "#/$defs/protectedEvidence"}, "prjna604658": {"$ref": "#/$defs/protectedEvidence"}, "prjna1210090_metadata": {"$ref": "#/$defs/protectedEvidence"}}},
+    "stop_line": {"const": "single SRR31989028 probe complete; remain blocked and do not download other replicates, create a boundary track, generate candidates or thresholds, or enter Slice 1"}
+  }
+}

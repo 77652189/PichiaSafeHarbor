@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pichia-safe-harbor/prjna1210090-metadata-acceptance/v1",
+  "$defs": {
+    "identity": {
+      "type": "object",
+      "required": ["size_bytes", "sha256"],
+      "properties": {
+        "size_bytes": {"type": "integer", "minimum": 1},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    }
+  },
+  "type": "object",
+  "required": ["schema_version", "acceptance_version", "run_id", "candidate_id", "execution_status", "verification_status", "scientific_acceptance_status", "eligible_as_independent_transcript_source", "toolchain_sha256", "qualification_gates", "blocking_gates", "run_manifest", "artifacts", "verification_evidence", "stop_line"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "acceptance_version": {"const": "prjna1210090-metadata-v1"},
+    "run_id": {"type": "string", "pattern": "^metadata-source-[0-9a-f]{16}$"},
+    "candidate_id": {"const": "prjna1210090-srp557139-wt-no-stress"},
+    "execution_status": {"const": "complete"},
+    "verification_status": {"const": "passed"},
+    "scientific_acceptance_status": {"const": "blocked"},
+    "eligible_as_independent_transcript_source": {"const": false},
+    "toolchain_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "qualification_gates": {"const": {
+      "archive_strain_identity": "passed",
+      "unmodified_strain-b_identity": "unresolved",
+      "accession_crosslinks": "passed",
+      "annotation_generation_independence": "passed",
+      "library_metadata": "passed",
+      "run_condition_specificity": "passed",
+      "raw_file_license": "unresolved",
+      "strand_specificity": "unavailable",
+      "biological_replication": "passed",
+      "raw_file_identity": "not-acquired",
+      "controlled_coordinate_mapping": "not-run"
+    }},
+    "blocking_gates": {"const": {
+      "unmodified_strain-b_identity": "unresolved",
+      "raw_file_license": "unresolved",
+      "strand_specificity": "unavailable",
+      "raw_file_identity": "not-acquired",
+      "controlled_coordinate_mapping": "not-run"
+    }},
+    "run_manifest": {"$ref": "#/$defs/identity"},
+    "artifacts": {
+      "type": "object",
+      "required": ["metadata_qualification.json", "metadata_qualification.md"],
+      "additionalProperties": false,
+      "properties": {
+        "metadata_qualification.json": {"$ref": "#/$defs/identity"},
+        "metadata_qualification.md": {"$ref": "#/$defs/identity"}
+      }
+    },
+    "verification_evidence": {
+      "type": "object",
+      "required": ["independent", "automated_tests", "repeatability"],
+      "additionalProperties": false,
+      "properties": {
+        "independent": {"$ref": "#/$defs/identity"},
+        "automated_tests": {
+          "allOf": [{"$ref": "#/$defs/identity"}],
+          "type": "object",
+          "required": ["passed_count"],
+          "properties": {"passed_count": {"type": "integer", "minimum": 70}}
+        },
+        "repeatability": {"$ref": "#/$defs/identity"}
+      }
+    },
+    "stop_line": {"const": "remain blocked; do not download raw reads, run coordinate mapping, reannotate, or enter Slice 1"}
+  }
+}

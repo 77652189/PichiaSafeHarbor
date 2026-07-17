@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pichia-safe-harbor/prjna1210090-metadata-manifest/v1",
+  "$defs": {
+    "identity": {
+      "type": "object",
+      "required": ["path", "size_bytes", "sha256"],
+      "properties": {
+        "path": {"type": "string"},
+        "size_bytes": {"type": "integer", "minimum": 1},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    }
+  },
+  "type": "object",
+  "required": ["schema_version", "candidate_id", "accessions", "reference_annotation_release", "protected_authority", "files"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "candidate_id": {"const": "prjna1210090-srp557139-wt-no-stress"},
+    "accessions": {
+      "type": "object",
+      "required": ["bioproject", "study", "runs"],
+      "properties": {
+        "bioproject": {"const": "PRJNA1210090"},
+        "study": {"const": "SRP557139"},
+        "runs": {
+          "type": "object",
+          "required": ["SRR31989016", "SRR31989027", "SRR31989028"],
+          "additionalProperties": false,
+          "properties": {
+            "SRR31989016": {"const": {"experiment": "SRX27343955", "sample": "SAMN46238833", "replicate": "3"}},
+            "SRR31989027": {"const": {"experiment": "SRX27343944", "sample": "SAMN46238832", "replicate": "2"}},
+            "SRR31989028": {"const": {"experiment": "SRX27343943", "sample": "SAMN46238831", "replicate": "1"}}
+          }
+        }
+      }
+    },
+    "reference_annotation_release": {"const": "2016-09-21"},
+    "protected_authority": {
+      "type": "object",
+      "required": ["slice0", "slice0a", "slice0b", "prjna604658"],
+      "additionalProperties": false,
+      "properties": {
+        "slice0": {"$ref": "#/$defs/identity"},
+        "slice0a": {"$ref": "#/$defs/identity"},
+        "slice0b": {"$ref": "#/$defs/identity"},
+        "prjna604658": {"$ref": "#/$defs/identity"}
+      }
+    },
+    "files": {
+      "type": "object",
+      "required": ["acquisition_evidence", "reference_manifest", "sra_experiment_packages", "ena_read_run", "bioproject", "ncbi_policy", "ena_terms"],
+      "additionalProperties": false,
+      "properties": {
+        "acquisition_evidence": {"$ref": "#/$defs/identity"},
+        "reference_manifest": {"$ref": "#/$defs/identity"},
+        "sra_experiment_packages": {"$ref": "#/$defs/identity"},
+        "ena_read_run": {"$ref": "#/$defs/identity"},
+        "bioproject": {"$ref": "#/$defs/identity"},
+        "ncbi_policy": {"$ref": "#/$defs/identity"},
+        "ena_terms": {"$ref": "#/$defs/identity"}
+      }
+    }
+  }
+}

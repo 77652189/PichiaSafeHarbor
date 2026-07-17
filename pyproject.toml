@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pichia-safe-harbor"
+version = "0.1.0"
+description = "Reproducible Strain-B intergenic baseline for Strain-T proxy analysis"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.optional-dependencies]
+# Only the Slice 4 Streamlit app (app/) needs these; the core src/pichia_safe_harbor
+# engine stays dependency-free by design.
+app = ["streamlit>=1.50", "pandas>=2.0"]
+
+[project.scripts]
+pichia-safe-harbor = "pichia_safe_harbor.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src", "."]
+testpaths = ["tests"]
+

@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "evidence_version": "2026-07-14.1",
+  "checked_on": "2026-07-14",
+  "timezone": "Asia/Tokyo",
+  "probes": [
+    {
+      "probe_id": "pichiagenome_http_redirect",
+      "target": "http://www.pichiagenome.org",
+      "method": "curl -L --max-time 30",
+      "result": "HTTP 301 to http://pichiagenome-ext.boku.ac.at followed by HTTP 502",
+      "availability": "unavailable"
+    },
+    {
+      "probe_id": "pichiagenome_https",
+      "target": "https://www.pichiagenome.org",
+      "method": "curl -L --max-time 30",
+      "result": "TLS handshake/receive failure",
+      "availability": "unavailable"
+    },
+    {
+      "probe_id": "oup_article",
+      "target": "https://academic.oup.com/femsyr/article/16/6/fow051/2197642",
+      "method": "curl -L --max-time 30",
+      "result": "HTTP 403",
+      "availability": "unavailable"
+    },
+    {
+      "probe_id": "europe_pmc_metadata",
+      "target": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:27388471&format=json",
+      "method": "Europe PMC REST",
+      "result": "HTTP 200; hasSuppl=N, inPMC=N, isOpenAccess=N",
+      "availability": "metadata_only"
+    },
+    {
+      "probe_id": "zenodo_search",
+      "target": "https://zenodo.org/api/records/?q=PichiaGenome&size=10",
+      "method": "Zenodo REST",
+      "result": "HTTP 200; total=0",
+      "availability": "metadata_only"
+    },
+    {
+      "probe_id": "wayback_pichiagenome_2016_2025",
+      "target": "https://web.archive.org/cdx/search/cdx?url=pichiagenome.org/*&output=json&filter=statuscode:200&from=2016&to=2025",
+      "method": "Wayback CDX API",
+      "result": "No 2016-2025 annotation data captures returned; older 2011 landing-page captures do not contain the 2016 curation dataset",
+      "availability": "unavailable"
+    },
+    {
+      "probe_id": "ncbi_sra_pubmed",
+      "target": "NCBI SRA query 27388471[All Fields]",
+      "method": "NCBI ESearch",
+      "result": "count=0",
+      "availability": "metadata_only"
+    },
+    {
+      "probe_id": "ncbi_geo_pubmed",
+      "target": "NCBI GDS query 27388471[All Fields]",
+      "method": "NCBI ESearch",
+      "result": "count=0",
+      "availability": "metadata_only"
+    },
+    {
+      "probe_id": "biocyc_picpa",
+      "target": "https://biocyc.org/organism-summary?object=PICPA",
+      "method": "curl -L --max-time 30",
+      "result": "Account creation/login page returned; source files and upstream annotation could not be verified without credentials",
+      "availability": "unavailable"
+    }
+  ]
+}
+

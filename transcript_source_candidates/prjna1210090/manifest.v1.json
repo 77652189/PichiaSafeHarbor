@@ -1,0 +1,85 @@
+{
+  "accessions": {
+    "bioproject": "PRJNA1210090",
+    "runs": {
+      "SRR31989016": {
+        "experiment": "SRX27343955",
+        "replicate": "3",
+        "sample": "SAMN46238833"
+      },
+      "SRR31989027": {
+        "experiment": "SRX27343944",
+        "replicate": "2",
+        "sample": "SAMN46238832"
+      },
+      "SRR31989028": {
+        "experiment": "SRX27343943",
+        "replicate": "1",
+        "sample": "SAMN46238831"
+      }
+    },
+    "study": "SRP557139"
+  },
+  "candidate_id": "prjna1210090-srp557139-wt-no-stress",
+  "files": {
+    "acquisition_evidence": {
+      "path": "transcript_source_candidates/prjna1210090/acquisition_evidence.v1.json",
+      "sha256": "c6bc6c189ff19cf114d47f7e3c3954762ff491c25a5427edcdd878a3f151b27e",
+      "size_bytes": 3876
+    },
+    "bioproject": {
+      "path": "local_runs/independent_transcript_sources/prjna1210090/source_files/bioproject_1210090.xml",
+      "sha256": "2aa1b3a2487bf118926caba28a10f11ef8e6d0d5304cf7850e2017038230a3a8",
+      "size_bytes": 3411
+    },
+    "ena_read_run": {
+      "path": "local_runs/independent_transcript_sources/prjna1210090/source_files/ena_read_run.json",
+      "sha256": "9968c359608447e7dd2ab5a6998510ce486387afca331c99bf7bba9d59d7c08a",
+      "size_bytes": 19091
+    },
+    "ena_terms": {
+      "path": "local_runs/independent_transcript_sources/prjna1210090/source_files/ena_terms_of_use.html",
+      "sha256": "29b7d5a384dd7e9520003fbf6b7a9a3c255da618a6c509bb76da84b0e9fe0529",
+      "size_bytes": 21379
+    },
+    "ncbi_policy": {
+      "path": "local_runs/independent_transcript_sources/prjna1210090/source_files/ncbi_policies.html",
+      "sha256": "8ad8f6f186ca51ec73a5fb8935ecfa17b8cbaad300b7025b381898ab72621869",
+      "size_bytes": 38936
+    },
+    "reference_manifest": {
+      "path": "reference/manifest.v1.json",
+      "sha256": "2a1ccb8dd802de23e392ed2ff7f37a6f72db5a93c757572e233eab959552cab0",
+      "size_bytes": 11432
+    },
+    "sra_experiment_packages": {
+      "path": "local_runs/independent_transcript_sources/prjna1210090/source_files/sra_experiment_packages.xml",
+      "sha256": "00e60eeea2a5bc1574974476890ad4cc2965ddc5c8fbe8600f53d3ee351d1af5",
+      "size_bytes": 261436
+    }
+  },
+  "protected_authority": {
+    "prjna604658": {
+      "path": "local_runs/independent_transcript_sources/prjna604658/qualification_v6_run1/acceptance_manifest.json",
+      "sha256": "d2af88922a46945a215fe8eaf7bf9b724d68afb0dd539b283e5fe02ba9db0a47",
+      "size_bytes": 2255
+    },
+    "slice0": {
+      "path": "local_runs/strain-b_slice0_completion_v6_run1/acceptance_manifest.json",
+      "sha256": "f04ac9119a891885dfd7f883484f5fe1ddbfea6a1895bcd353b604dec2b294b0",
+      "size_bytes": 7175
+    },
+    "slice0a": {
+      "path": "local_runs/slice0a/qualification_v5_run1/acceptance_manifest.json",
+      "sha256": "564324ad63ceb22e6728e85b09bfbcfc625ad39df3048702bc99d47c507e4b78",
+      "size_bytes": 2120
+    },
+    "slice0b": {
+      "path": "local_runs/slice0b/qualification_v5_run1/acceptance_manifest.json",
+      "sha256": "83bdf169bbfa3dcfbf7b1299175fb70f27f72e3c4388672703a9df9e4c7942f3",
+      "size_bytes": 2864
+    }
+  },
+  "reference_annotation_release": "2016-09-21",
+  "schema_version": 1
+}
