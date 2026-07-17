@@ -36,10 +36,10 @@ Today the tool performs a rigorous **first-pass structural screen** — intergen
 
 ```mermaid
 flowchart LR
-    A["Reference genome\nFASTA + GFF3"] --> B["Genome baseline\n(intergenic region inventory)"]
-    B --> C["Candidate window screening\n(buffer / orientation / boundary rules)"]
-    C --> D["Candidate windows\n+ extracted sequence"]
-    C --> E["Excluded regions\n+ reasons"]
+    A["Reference genome<br/>FASTA + GFF3"] --> B["Genome baseline<br/>intergenic region inventory"]
+    B --> C["Candidate window screening<br/>buffer / orientation / boundary rules"]
+    C --> D["Candidate windows<br/>+ extracted sequence"]
+    C --> E["Excluded regions<br/>+ reasons"]
     B --> F["Streamlit workbench"]
     D --> F
     E --> F
@@ -49,17 +49,17 @@ flowchart LR
 
 ```mermaid
 flowchart TD
-    CLI["CLI\nsrc/pichia_safe_harbor/cli.py"]
-    APP["Streamlit app\napp/"]
-    CORE["Core engine\nsrc/pichia_safe_harbor/"]
-    TESTS["Tests\ntests/"]
-    DOCS["ADRs + specs\ndocs/"]
+    CLI["CLI<br/>src/pichia_safe_harbor/cli.py"]
+    APP["Streamlit app<br/>app/"]
+    CORE["Core engine<br/>src/pichia_safe_harbor/"]
+    TESTS["Tests<br/>tests/"]
+    DOCS["ADRs + specs<br/>docs/"]
 
     CLI --> CORE
     APP --> CORE
     TESTS --> CORE
-    DOCS -.governs.-> CORE
-    DOCS -.governs.-> APP
+    DOCS -.-> CORE
+    DOCS -.-> APP
 ```
 
 | Layer | Key path | Responsibility |

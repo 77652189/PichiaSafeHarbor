@@ -36,10 +36,10 @@ PichiaSafeHarbor 用于为目标毕赤酵母生产菌株（本仓库中统一称
 
 ```mermaid
 flowchart LR
-    A["参考基因组\nFASTA + GFF3"] --> B["基因组基线\n（基因间区清单）"]
-    B --> C["候选窗口筛选\n（缓冲/方向/边界规则）"]
-    C --> D["候选窗口\n+ 提取的序列"]
-    C --> E["排除记录\n+ 具体理由"]
+    A["参考基因组<br/>FASTA + GFF3"] --> B["基因组基线<br/>基因间区清单"]
+    B --> C["候选窗口筛选<br/>缓冲/方向/边界规则"]
+    C --> D["候选窗口<br/>+ 提取的序列"]
+    C --> E["排除记录<br/>+ 具体理由"]
     B --> F["Streamlit 工作台"]
     D --> F
     E --> F
@@ -49,17 +49,17 @@ flowchart LR
 
 ```mermaid
 flowchart TD
-    CLI["命令行\nsrc/pichia_safe_harbor/cli.py"]
-    APP["Streamlit 应用\napp/"]
-    CORE["核心引擎\nsrc/pichia_safe_harbor/"]
-    TESTS["测试\ntests/"]
-    DOCS["ADR + 规格文档\ndocs/"]
+    CLI["命令行<br/>src/pichia_safe_harbor/cli.py"]
+    APP["Streamlit 应用<br/>app/"]
+    CORE["核心引擎<br/>src/pichia_safe_harbor/"]
+    TESTS["测试<br/>tests/"]
+    DOCS["ADR + 规格文档<br/>docs/"]
 
     CLI --> CORE
     APP --> CORE
     TESTS --> CORE
-    DOCS -.约束.-> CORE
-    DOCS -.约束.-> APP
+    DOCS -.-> CORE
+    DOCS -.-> APP
 ```
 
 | 层级 | 关键路径 | 职责 |
